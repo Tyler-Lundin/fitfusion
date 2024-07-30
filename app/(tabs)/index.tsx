@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 
 import { Text, View } from '@/components/Themed';
 import { Link } from 'expo-router';
@@ -9,10 +9,14 @@ export default function TabOneScreen() {
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <View style={styles.button_list}>
         <Link href="/exercise" asChild>
-          <Text style={styles.title}>Exercise</Text>
+          <Pressable>
+            {({pressed})=>(
+              <Text style={styles.button}>Exercise</Text>
+            )}
+          </Pressable>
         </Link>
         <Link href="/nutrition" asChild>
-          <Text style={styles.title}>Nutrition</Text>
+          <Text style={styles.button}>Nutrition</Text>
         </Link>
       </View>
     </View>
@@ -25,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
+  button: {
     fontSize: 20,
     fontWeight: 'bold',
     borderWidth: 1,
